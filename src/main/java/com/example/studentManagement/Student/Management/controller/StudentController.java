@@ -2,7 +2,10 @@ package com.example.studentManagement.Student.Management.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.studentManagement.Student.Management.entity.Student;
@@ -17,9 +20,19 @@ public class StudentController {
 		this.studentService = studentService;
 	}
 
-	
 	@RequestMapping("/getAllRecords")
 	public List<Student> getAllRecords() {
 		return studentService.getAllRecords();
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/getRecordById/{id}")
+	public Student getRecordById(@PathVariable("id") int id) {
+		return studentService.getRecordById(id);
+	}
+
+	@GetMapping("/getAllRecordsByDomain/{domain}")
+	public List<Student> getAllRecordsByDomain(@PathVariable("domain") String domain) {
+		
+		return studentService.getAllRecordsByDomain(domain);
 	}
 }
