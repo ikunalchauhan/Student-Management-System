@@ -55,4 +55,11 @@ public class StudentService {
 		return data;
 	}
 	
+	
+	public Student addRecord(Student data) {
+		
+		list.add(data);
+		
+		return data;
+	}
 }
